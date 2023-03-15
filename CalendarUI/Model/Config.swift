@@ -41,16 +41,16 @@ public struct Config {
     public var controller = Config.Controller()
 
     /// Month titles
-//    public var monthHeader = Config.MonthHeader()
+    public var monthHeader = Config.MonthHeader()
 //
 //    /// Day cells (selection parameters, font, etc.)
-//    public var dayCell = Config.DayCell()
+    public var dayCell = Config.DayCell()
 //
 //    /// Top header view with week day names
     public var weekView = Config.WeekView()
 //
 //    /// Current value view appearance (clear button, date format, etc.)
-//    public var currentValueView = Config.CurrentValueView()
+    public var currentValueView = Config.CurrentValueView()
 //
 //    /// Bottom view with shortcuts
     public var shortcutContainerView = Config.ShortcutContainerView()

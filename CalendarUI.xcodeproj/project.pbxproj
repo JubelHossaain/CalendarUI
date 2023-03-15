@@ -24,6 +24,9 @@
 		9467F8C229C1C69500CA1A0B /* ShortcutItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467F8C129C1C69500CA1A0B /* ShortcutItemView.swift */; };
 		9467F8C529C1C6EB00CA1A0B /* PrettyCards in Frameworks */ = {isa = PBXBuildFile; productRef = 9467F8C429C1C6EB00CA1A0B /* PrettyCards */; };
 		9467F8C729C1D54600CA1A0B /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467F8C629C1D54600CA1A0B /* WeekView.swift */; };
+		9467F8CA29C1E9C000CA1A0B /* JTAppleCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 9467F8C929C1E9C000CA1A0B /* JTAppleCalendar */; };
+		9467F8CC29C1EAED00CA1A0B /* MonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467F8CB29C1EAED00CA1A0B /* MonthHeader.swift */; };
+		9467F8CE29C1EB8800CA1A0B /* CurrentValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467F8CD29C1EB8800CA1A0B /* CurrentValueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,8 @@
 		9467F8BF29C1C66D00CA1A0B /* ShortcutContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutContainerView.swift; sourceTree = "<group>"; };
 		9467F8C129C1C69500CA1A0B /* ShortcutItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutItemView.swift; sourceTree = "<group>"; };
 		9467F8C629C1D54600CA1A0B /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		9467F8CB29C1EAED00CA1A0B /* MonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthHeader.swift; sourceTree = "<group>"; };
+		9467F8CD29C1EB8800CA1A0B /* CurrentValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9467F8C529C1C6EB00CA1A0B /* PrettyCards in Frameworks */,
+				9467F8CA29C1E9C000CA1A0B /* JTAppleCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +141,8 @@
 				9467F8BF29C1C66D00CA1A0B /* ShortcutContainerView.swift */,
 				9467F8C129C1C69500CA1A0B /* ShortcutItemView.swift */,
 				9467F8C629C1D54600CA1A0B /* WeekView.swift */,
+				9467F8CB29C1EAED00CA1A0B /* MonthHeader.swift */,
+				9467F8CD29C1EB8800CA1A0B /* CurrentValueView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 			name = CalendarUI;
 			packageProductDependencies = (
 				9467F8C429C1C6EB00CA1A0B /* PrettyCards */,
+				9467F8C929C1E9C000CA1A0B /* JTAppleCalendar */,
 			);
 			productName = CalendarUI;
 			productReference = 945D591F29C047DC00BE2BCE /* CalendarUI.app */;
@@ -188,6 +197,7 @@
 			mainGroup = 945D591629C047DC00BE2BCE;
 			packageReferences = (
 				9467F8C329C1C6EB00CA1A0B /* XCRemoteSwiftPackageReference "PrettyCards" */,
+				9467F8C829C1E9C000CA1A0B /* XCRemoteSwiftPackageReference "JTAppleCalendar" */,
 			);
 			productRefGroup = 945D592029C047DC00BE2BCE /* Products */;
 			projectDirPath = "";
@@ -224,8 +234,10 @@
 				945D592329C047DC00BE2BCE /* AppDelegate.swift in Sources */,
 				9467F8BD29C1A82E00CA1A0B /* String+CapitalizeFirstLetter.swift in Sources */,
 				9467F8C029C1C66D00CA1A0B /* ShortcutContainerView.swift in Sources */,
+				9467F8CC29C1EAED00CA1A0B /* MonthHeader.swift in Sources */,
 				945D592529C047DC00BE2BCE /* SceneDelegate.swift in Sources */,
 				9467F8C729C1D54600CA1A0B /* WeekView.swift in Sources */,
+				9467F8CE29C1EB8800CA1A0B /* CurrentValueView.swift in Sources */,
 				9467F8C229C1C69500CA1A0B /* ShortcutItemView.swift in Sources */,
 				9467F8B229C1A72600CA1A0B /* Config.swift in Sources */,
 				9467F8B929C1A81600CA1A0B /* Calendar+LastWeekday.swift in Sources */,
@@ -446,6 +458,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9467F8C829C1E9C000CA1A0B /* XCRemoteSwiftPackageReference "JTAppleCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/patchthecode/JTAppleCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -453,6 +473,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9467F8C329C1C6EB00CA1A0B /* XCRemoteSwiftPackageReference "PrettyCards" */;
 			productName = PrettyCards;
+		};
+		9467F8C929C1E9C000CA1A0B /* JTAppleCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9467F8C829C1E9C000CA1A0B /* XCRemoteSwiftPackageReference "JTAppleCalendar" */;
+			productName = JTAppleCalendar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

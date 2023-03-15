@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "jtapplecalendar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/patchthecode/JTAppleCalendar",
+      "state" : {
+        "revision" : "89bc6f1c0426b3bd2856409ec600333a7d087e1b",
+        "version" : "8.0.4"
+      }
+    },
+    {
       "identity" : "prettycards",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simla-tech/PrettyCards.git",

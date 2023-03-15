@@ -12,7 +12,7 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
    
     lazy var chooseRangeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Choose range of dates", for: .normal)
+        button.setTitle("Show Calendar", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(self.chooseRange), for: .touchUpInside)
         return button
@@ -51,6 +51,19 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
     private var isEndTextFieldSelected : Bool = false
     private var skUIdatePicker: SKUIDatePicker?
     
+    var currentValue: FastisValue? {
+        didSet {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            if let rangeValue = self.currentValue as? FastisRange {
+                //self.currentDateLabel.text = formatter.string(from: rangeValue.fromDate) + " - " + formatter.string(from: rangeValue.toDate)
+            } else if let date = self.currentValue as? Date {
+              //  self.currentDateLabel.text = formatter.string(from: date)
+            } else {
+               // self.currentDateLabel.text = "Choose a date"
+            }
+        }
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,21 +143,28 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         isEndTextFieldSelected = true
         skUIdatePicker!.showDatePicker(txtDatePicker: endDateTxtField)
     }
-    
+    public var minimumDate: Date?
+    public var maximumDate: Date?
     @objc private func chooseRange() {
         
-        let calendarViewController = CalendarViewController()
-//        fastisController.title = "Choose range"
-//        fastisController.initialValue = self.currentValue as? FastisRange
-//        fastisController.minimumDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
-//        print("minimum Data : \(fastisController.minimumDate)")
-//        fastisController.maximumDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
-//        print("maximumDate Data : \(fastisController.maximumDate)")
-//        fastisController.allowToChooseNilDate = true
-//       // fastisController.shortcuts = [.today, .lastWeek, .lastMonth]
-//        fastisController.doneHandler = { newValue in
-//            self.currentValue = newValue
-//        }
+        let calendarViewController = CalendarViewController(mode: .range)
+        calendarViewController.initialValue = self.currentValue as? FastisRange
+        calendarViewController.minimumDate = minimumDate
+        print("minimum Data : \(calendarViewController.minimumDate)")
+        calendarViewController.maximumDate = maximumDate
+        print("maximumDate Data : \(calendarViewController.maximumDate)")
+        calendarViewController.allowToChooseNilDate = true
+////        fastisController.title = "Choose range"
+////        fastisController.initialValue = self.currentValue as? FastisRange
+////        fastisController.minimumDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+////        print("minimum Data : \(fastisController.minimumDate)")
+////        fastisController.maximumDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+////        print("maximumDate Data : \(fastisController.maximumDate)")
+////        fastisController.allowToChooseNilDate = true
+////       // fastisController.shortcuts = [.today, .lastWeek, .lastMonth]
+////        fastisController.doneHandler = { newValue in
+////            self.currentValue = newValue
+////        }
         self.navigationController?.pushViewController(calendarViewController, animated: true)
       //  let today = Date()
 //        let nextFiveDays = Calendar.current.date(byAdding: .day, value: 5, to: today)!
@@ -167,13 +187,15 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         
     }
     
-    func getDate(_ sKUIDatePicker:SKUIDatePicker, date:String) {
+    func getDate(_ sKUIDatePicker:SKUIDatePicker, date: Date) {
         print(date)
         if isEndTextFieldSelected {
             endDateTxtField.text = "\(date)"
+            maximumDate = date
         }
         else {
             startTextField.text = "\(date)"
+            minimumDate = date
         }
         
         self.view.endEditing(true)
@@ -187,8 +209,8 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
 
 import UIKit
 
-protocol SKUIDatePickerDelegate:class {
-    func getDate(_ sKUIDatePicker:SKUIDatePicker, date:String)
+protocol SKUIDatePickerDelegate: AnyObject {
+    func getDate(_ sKUIDatePicker:SKUIDatePicker, date: Date)
     func cancel(_ sKUIDatePicker:SKUIDatePicker)
 }
 
@@ -227,10 +249,10 @@ class SKUIDatePicker:UIView {
     
     @objc func donedatePicker(){
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = dateFormate
-        let result = formatter.string(from: datePicker.date)
-        self.delegate?.getDate(self, date: result)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = dateFormate
+//        let result = formatter.string(from: datePicker.date)
+        self.delegate?.getDate(self, date: datePicker.date)
         
     }
     
