@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController,SKUIDatePickerDelegate {
-    private var isEndTextFieldSelected : Bool = false
+class HomeViewController: UIViewController,SKUIDatePickerDelegate {
+    // MARK: - Outlets
+   
     lazy var chooseRangeButton: UIButton = {
         let button = UIButton()
         button.setTitle("Choose range of dates", for: .normal)
@@ -45,8 +46,11 @@ class CalendarViewController: UIViewController,SKUIDatePickerDelegate {
         textField.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
         return textField
     }()
-    
+    // MARK: - Variables
+    private var isEndTextFieldSelected : Bool = false
     private var skUIdatePicker: SKUIDatePicker?
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,11 +64,9 @@ class CalendarViewController: UIViewController,SKUIDatePickerDelegate {
         //skUIdatePicker!.showDatePicker(txtDatePicker: endDateTxtField)
     }
     
-    @objc func myTargetFunction(textField: UITextField) {
-        print("myTargetFunction")
-        isEndTextFieldSelected = true
-        skUIdatePicker!.showDatePicker(txtDatePicker: endDateTxtField)
-    }
+    // MARK: - Configuration
+    
+   
     private func configureUI() {
         self.view.backgroundColor = .systemBackground
         self.navigationItem.title = "Celendar demo"
@@ -102,8 +104,14 @@ class CalendarViewController: UIViewController,SKUIDatePickerDelegate {
         return array
     }
     
-    @objc
-    private func chooseRange() {
+    // MARK: - Actions
+    @objc func myTargetFunction(textField: UITextField) {
+        print("myTargetFunction")
+        isEndTextFieldSelected = true
+        skUIdatePicker!.showDatePicker(txtDatePicker: endDateTxtField)
+    }
+    
+    @objc private func chooseRange() {
         let today = Date()
         let nextFiveDays = Calendar.current.date(byAdding: .day, value: 5, to: today)!
         

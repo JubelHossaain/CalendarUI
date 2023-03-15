@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		945D592329C047DC00BE2BCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D592229C047DC00BE2BCE /* AppDelegate.swift */; };
 		945D592529C047DC00BE2BCE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D592429C047DC00BE2BCE /* SceneDelegate.swift */; };
-		945D592729C047DC00BE2BCE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D592629C047DC00BE2BCE /* CalendarViewController.swift */; };
+		945D592729C047DC00BE2BCE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D592629C047DC00BE2BCE /* HomeViewController.swift */; };
 		945D592C29C047DE00BE2BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945D592B29C047DE00BE2BCE /* Assets.xcassets */; };
 		945D592F29C047DE00BE2BCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 945D592D29C047DE00BE2BCE /* LaunchScreen.storyboard */; };
 		9467F8AD29C181FC00CA1A0B /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9467F8AC29C181FC00CA1A0B /* UIView+Ext.swift */; };
@@ -19,7 +19,7 @@
 		945D591F29C047DC00BE2BCE /* CalendarUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		945D592229C047DC00BE2BCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		945D592429C047DC00BE2BCE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		945D592629C047DC00BE2BCE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		945D592629C047DC00BE2BCE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		945D592B29C047DE00BE2BCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		945D592E29C047DE00BE2BCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		945D593029C047DE00BE2BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 				9467F8AA29C1766B00CA1A0B /* Model */,
 				945D592229C047DC00BE2BCE /* AppDelegate.swift */,
 				945D592429C047DC00BE2BCE /* SceneDelegate.swift */,
-				945D592629C047DC00BE2BCE /* CalendarViewController.swift */,
+				945D592629C047DC00BE2BCE /* HomeViewController.swift */,
 				945D592B29C047DE00BE2BCE /* Assets.xcassets */,
 				945D592D29C047DE00BE2BCE /* LaunchScreen.storyboard */,
 				945D593029C047DE00BE2BCE /* Info.plist */,
@@ -154,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9467F8AD29C181FC00CA1A0B /* UIView+Ext.swift in Sources */,
-				945D592729C047DC00BE2BCE /* CalendarViewController.swift in Sources */,
+				945D592729C047DC00BE2BCE /* HomeViewController.swift in Sources */,
 				945D592329C047DC00BE2BCE /* AppDelegate.swift in Sources */,
 				945D592529C047DC00BE2BCE /* SceneDelegate.swift in Sources */,
 			);
