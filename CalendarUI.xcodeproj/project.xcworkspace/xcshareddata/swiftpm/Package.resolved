@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "prettycards",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simla-tech/PrettyCards.git",
+      "state" : {
+        "revision" : "3115edbd79c66090729dfb261dc4fbf7c6df0ac1",
+        "version" : "1.0.7"
+      }
+    }
+  ],
+  "version" : 2
+}

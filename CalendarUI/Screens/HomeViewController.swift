@@ -73,6 +73,25 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         self.navigationItem.title = "Celendar demo"
         self.navigationItem.largeTitleDisplayMode = .always
     }
+    /**
+     Present FastisController above current top view controller
+
+     - Parameters:
+        - viewController: view controller which will present FastisController
+        - flag: Pass true to animate the presentation; otherwise, pass false.
+        - completion: The block to execute after the presentation finishes. This block has no return value and takes no parameters. You may specify nil for this parameter.
+     */
+//     func present(above viewController: UIViewController, animated flag: Bool = true, completion: (() -> Void)? = nil) {
+//        let navVc = UINavigationController(rootViewController: self)
+//        navVc.modalPresentationStyle = .formSheet
+//        if viewController.preferredContentSize != .zero {
+//            navVc.preferredContentSize = viewController.preferredContentSize
+//        } else {
+//            navVc.preferredContentSize = CGSize(width: 445, height: 550)
+//        }
+//
+//        viewController.present(navVc, animated: flag, completion: completion)
+//    }
     
     private func configureSubviews() {
         self.view.addSubview(self.chooseRangeButton)
@@ -113,11 +132,25 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
     }
     
     @objc private func chooseRange() {
-        let today = Date()
-        let nextFiveDays = Calendar.current.date(byAdding: .day, value: 5, to: today)!
         
-        let myRange = datesRange(from: today, to: nextFiveDays)
-        print(myRange)
+        let calendarViewController = CalendarViewController()
+//        fastisController.title = "Choose range"
+//        fastisController.initialValue = self.currentValue as? FastisRange
+//        fastisController.minimumDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
+//        print("minimum Data : \(fastisController.minimumDate)")
+//        fastisController.maximumDate = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+//        print("maximumDate Data : \(fastisController.maximumDate)")
+//        fastisController.allowToChooseNilDate = true
+//       // fastisController.shortcuts = [.today, .lastWeek, .lastMonth]
+//        fastisController.doneHandler = { newValue in
+//            self.currentValue = newValue
+//        }
+        self.navigationController?.pushViewController(calendarViewController, animated: true)
+      //  let today = Date()
+//        let nextFiveDays = Calendar.current.date(byAdding: .day, value: 5, to: today)!
+//
+//        let myRange = datesRange(from: today, to: nextFiveDays)
+//        print(myRange)
         //        let fastisController = FastisController(mode: .range)
         //        fastisController.title = "Choose range"
         //        fastisController.initialValue = self.currentValue as? FastisRange
@@ -131,6 +164,7 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         //            self.currentValue = newValue
         //        }
         //        fastisController.present(above: self)
+        
     }
     
     func getDate(_ sKUIDatePicker:SKUIDatePicker, date:String) {
@@ -147,6 +181,7 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
     func cancel(_ sKUIDatePicker:SKUIDatePicker){
         self.view.endEditing(true)
     }
+    
 }
 
 

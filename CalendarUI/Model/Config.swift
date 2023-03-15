@@ -47,15 +47,15 @@ public struct Config {
 //    public var dayCell = Config.DayCell()
 //
 //    /// Top header view with week day names
-//    public var weekView = Config.WeekView()
+    public var weekView = Config.WeekView()
 //
 //    /// Current value view appearance (clear button, date format, etc.)
 //    public var currentValueView = Config.CurrentValueView()
 //
 //    /// Bottom view with shortcuts
-//    public var shortcutContainerView = Config.ShortcutContainerView()
+    public var shortcutContainerView = Config.ShortcutContainerView()
 //
 //    /// Shortcut item in the bottom view
-//    public var shortcutItemView = Config.ShortcutItemView()
+    public var shortcutItemView = Config.ShortcutItemView()
 
 }
