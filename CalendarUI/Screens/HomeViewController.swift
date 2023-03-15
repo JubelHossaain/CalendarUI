@@ -46,6 +46,7 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         textField.addTarget(self, action: #selector(myTargetFunction), for: .touchDown)
         return textField
     }()
+    
     // MARK: - Variables
     private var isEndTextFieldSelected : Bool = false
     private var skUIdatePicker: SKUIDatePicker?
