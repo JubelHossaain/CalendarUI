@@ -48,27 +48,6 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
         return barButtonItem
     }()
     
-    //    private lazy var shortcutContainerView: ShortcutContainerView<Value> = {
-    //        let view = ShortcutContainerView<Value>(
-    //            config: self.config.shortcutContainerView,
-    //            itemConfig: self.config.shortcutItemView,
-    //            shortcuts: self.shortcuts
-    //        )
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        if let value = self.value {
-    //            view.selectedShortcut = self.shortcuts.first(where: { $0.isEqual(to: value) })
-    //        }
-    //        view.onSelect = { [weak self] selectedShortcut in
-    //            guard let self else { return }
-    //            let newValue = selectedShortcut.action()
-    //            if !newValue.outOfRange(minDate: self.privateMinimumDate, maxDate: self.privateMaximumDate) {
-    //                self.value = newValue
-    //               // self.selectValue(newValue, in: self.calendarView)
-    //            }
-    //        }
-    //        return view
-    //    }()
-    
     private lazy var weekView: WeekView = {
         let view = WeekView(calendar: self.config.calendar, config: self.config.weekView)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +111,7 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
     public var dismissHandler: (() -> Void)?
     
     public var initialValue: Value?
+    public var doneHandler: ((Value?) -> Void)?
     
     /**
      Minimal selection date. Dates less then current will be marked as unavailable
@@ -155,21 +135,9 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
             self.privateMaximumDate = newValue?.endOfDay()
         }
     }
-    public var allowDateRangeChanges = false
+    public var allowDateRangeChanges = true
     
-    /**
-     The block to execute after "Done" button will be tapped
-     */
-    //    public var doneHandler: ((Value?) -> Void)?
-    //    private var value: Value? {
-    //        didSet {
-    ////            self.updateSelectedShortcut()
-    ////            self.currentValueView.currentValue = self.value
-    //            self.doneBarButtonItem.isEnabled = self.allowToChooseNilDate || self.value != nil
-    //        }
-    //    }
-    //    public var shortcuts: [FastisShortcut<Value>] = []
-    
+   
     //MARK: - LifeCycle
     /// Initiate FastisController
     /// - Parameter config: Configuration parameters
@@ -209,9 +177,6 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
         self.view.addSubview(self.currentValueView)
         self.view.addSubview(self.weekView)
         self.view.addSubview(self.calendarView)
-        //        if !self.shortcuts.isEmpty {
-        //            self.view.addSubview(self.shortcutContainerView)
-        //        }
     }
     
     
@@ -233,9 +198,6 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
             self.calendarView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16),
             self.calendarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-//        calendarView.translatesAutoresizingMaskIntoConstraints = false
-//        calendarView.anchorView(top: self.weekView.bottomAnchor, left: self.view.leftAnchor, right: self.view.rightAnchor, paddingLeft: 16, paddingRight: -16)
-        
     }
     
     private func configureInitialState() {
@@ -274,15 +236,7 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
         }
     }
     //MARK: - Actions
-    //    private func updateSelectedShortcut() {
-    //        guard !self.shortcuts.isEmpty else { return }
-    //        if let value = self.value {
-    //            self.shortcutContainerView.selectedShortcut = self.shortcuts.first(where: { $0.isEqual(to: value) })
-    //        } else {
-    //            self.shortcutContainerView.selectedShortcut = nil
-    //        }
-    //    }
-    
+
     private func selectRange(_ range: FastisRange, in calendar: JTACMonthView) {
         calendar.deselectAllDates(triggerSelectionDelegate: false)
         calendar.selectDates(
@@ -306,17 +260,10 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
     }
     
     @objc private func done() {
-        // self.doneHandler?(self.value)
+         self.doneHandler?(self.value)
         self.cancel()
     }
     
-    //    private func selectValue(_ value: Value?, in calendar: JTACMonthView) {
-    //        if let date = value as? Date {
-    //            calendar.selectDates([date])
-    //        } else if let range = value as? FastisRange {
-    //            self.selectRange(range, in: calendar)
-    //        }
-    //    }
     private func selectValue(_ value: Value?, in calendar: JTACMonthView) {
         if let date = value as? Date {
             calendar.selectDates([date])
@@ -324,6 +271,7 @@ class CalendarViewController<Value: FastisValue> : UIViewController,JTACMonthVie
             self.selectRange(range, in: calendar)
         }
     }
+
     private func handleDateTap(in calendar: JTACMonthView, date: Date) {
 
         switch Value.mode {

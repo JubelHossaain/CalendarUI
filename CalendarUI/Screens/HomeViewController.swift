@@ -50,7 +50,7 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
     // MARK: - Variables
     private var isEndTextFieldSelected : Bool = false
     private var skUIdatePicker: SKUIDatePicker?
-    
+   
     var currentValue: FastisValue? {
         didSet {
             let formatter = DateFormatter()
@@ -154,6 +154,10 @@ class HomeViewController: UIViewController,SKUIDatePickerDelegate {
         calendarViewController.maximumDate = maximumDate
         print("maximumDate Data : \(calendarViewController.maximumDate)")
         calendarViewController.allowToChooseNilDate = true
+        calendarViewController.doneHandler = { newValue in
+            self.currentValue = newValue
+            
+        }
 ////        fastisController.title = "Choose range"
 ////        fastisController.initialValue = self.currentValue as? FastisRange
 ////        fastisController.minimumDate = Calendar.current.date(byAdding: .month, value: -1, to: Date())
